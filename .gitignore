@@ -1,0 +1,9 @@
+# Editor configs
+.vs/
+
+# Compilation objects
+bin/
+obj/
+
+# Publishing directory
+publish/
