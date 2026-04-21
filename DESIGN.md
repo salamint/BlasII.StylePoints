@@ -81,6 +81,13 @@ Passively buffs the style multiplicator.
 
 ## How to reward the player?
 
+- Score
+- Higher chances of gaining marks or martyrdom
+- More tears of atonement
+- Less damage taken
+- More damage given
+- Reduce guilt?
+
 ## How to make a progression?
 
 At the start, the player only has one weapon, a few prayers and quick verses,
