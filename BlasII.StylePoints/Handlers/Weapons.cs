@@ -9,5 +9,10 @@ public class GeneralHandler : WeaponHandler
     {
 		Main.StylePoints.ComboMeter.Increment();
     }
+
+    public override void OnRestAtPrieDieu()
+    {
+		Main.StylePoints.ComboMeter.Reset();
+    }
 }
 
