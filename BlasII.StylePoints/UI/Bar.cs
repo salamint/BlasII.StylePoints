@@ -5,6 +5,27 @@ using System.Collections.Generic;
 
 namespace BlasII.StylePoints.UI;
 
+/// <summary>
+/// Enumeration containg the different alignment options possible for a bar.
+/// </summary>
+public enum BarAlignment
+{
+	/// <summary>
+	/// Aligns the bar on the left side.
+	/// </summary>
+    Left,
+
+	/// <summary>
+	/// Aligns the bar in the center.
+	/// </summary>
+	Center,
+
+	/// <summary>
+	/// Aligns the bar on the right.
+	/// </summary>
+	Right
+}
+
 
 /// <summary>
 /// Displays a bar that can change of size.
@@ -30,6 +51,11 @@ public class Bar : Component
 	/// The color of the bar (defaults to white).
 	/// </summary>
 	public Color Color { get; init; } = Color.white;
+
+	/// <summary>
+	/// The alignment of the bar.
+	/// </summary>
+	public BarAlignment Alignment { get; init; } = BarAlignment.Left;
 
 	private Image _image;
 
@@ -64,7 +90,21 @@ public class Bar : Component
 	{
 		if (Visible)
 		{
-			_image.rectTransform.SetSize(new Vector2(Size.x * ratio, Size.y));
+			float width = Size.x * ratio;
+			_image.rectTransform.SetSize(new Vector2(width, Size.y));
+
+			float x = Position.x;
+			float offset = (Size.x - width) / 2;
+			switch (Alignment)
+			{
+				case BarAlignment.Left:
+					x -= offset;
+					break;
+				case BarAlignment.Right:
+					x += offset;
+					break;
+			}
+			_image.rectTransform.SetPosition(new Vector2(x, Position.y));
 		}
 	}
 }
