@@ -26,7 +26,7 @@ public class StylePoints : BlasIIMod
 
 	public Rating CurrentRating { get => RatingsManager[Ratings[currentRatingIndex]]; }
 
-	public ComboMeter ComboMeter = new ();
+	public ComboMeter ComboMeter { get; } = new ();
 
 	private static string SwitchKeybinding = "SwitchStyleMeter";
 
