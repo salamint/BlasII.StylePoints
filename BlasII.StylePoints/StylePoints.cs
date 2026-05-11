@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BlasII.ModdingAPI;
+using BlasII.StylePoints.Bonuses;
 using BlasII.StylePoints.Combo;
 using BlasII.StylePoints.Ratings;
 using UnityEngine;
@@ -28,7 +29,16 @@ public class StylePoints : BlasIIMod
 
 	public ComboMeter ComboMeter { get; } = new ();
 
+	public BonusesManager BonusesManager { get; } = new ();
+	public BonusQueue BonusQueue { get; } = new ();
+
 	private static string SwitchKeybinding = "SwitchStyleMeter";
+
+	public void AddBonus(BonusID id)
+	{
+		Bonus bonus = BonusesManager[id];
+		BonusQueue.Add(bonus);
+	}
 
     protected override void OnInitialize()
     {
@@ -39,6 +49,7 @@ public class StylePoints : BlasIIMod
 		});
 
 		RatingsManager.Init();
+		BonusesManager.Init();
     }
 
     protected override void OnSceneLoaded(string sceneName)
@@ -67,6 +78,7 @@ public class StylePoints : BlasIIMod
 			CurrentRating.Text.Visible = visible;
 		}
 
+		BonusQueue.Update();
 		ComboMeter.Update();
     }
 }
