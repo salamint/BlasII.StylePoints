@@ -39,6 +39,11 @@ public class ComboTimer
     /// </summary>
     public bool Finished { get => Running && TimeRemaining <= 0; }
 
+    /// <summary>
+	/// Whether the timer is paused or not.
+    /// </summary>
+    public bool Paused { get; private set; } = false;
+
 	private Bar _bar = new ()
 	{
 		Name = "ComboTimerBar",
@@ -66,12 +71,36 @@ public class ComboTimer
 	}
 
 	/// <summary>
+	/// Fills the timer to its maximum value.
+	/// </summary>
+	public void Fill()
+	{
+		TimeRemaining = MAXIMUM_TIME_REMAINING;
+	}
+
+	/// <summary>
+	/// Pauses the timer.
+	/// </summary>
+	public void Pause()
+	{
+		Paused = true;
+	}
+
+	/// <summary>
+	/// Resumes (unpauses) the timer.
+	/// </summary>
+	public void Resume()
+	{
+		Paused = false;
+	}
+
+	/// <summary>
 	/// Updates the size of the bar to idicate the amount of time left, and
 	/// decrease the time remaining.
 	/// </summary>
 	public void Update()
 	{
-		if (TimeRemaining > 0 && SceneHelper.GameSceneLoaded)
+		if (!Paused && TimeRemaining > 0 && SceneHelper.GameSceneLoaded)
 		{
 			_bar.Update(TimeRemaining / MAXIMUM_TIME_REMAINING);
 			TimeRemaining -= Time.deltaTime;
