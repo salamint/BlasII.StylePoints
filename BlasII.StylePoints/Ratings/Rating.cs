@@ -21,5 +21,16 @@ public class Rating
 	/// The text of the rating to display at the top of the screen.
 	/// </summary>
 	public RatingText Text { get; init; }
+
+	/* Constructors */
+
+	/// <summary>
+	/// Initializes a new rating from a unique identifier and a text.
+	/// </summary>
+	public Rating(RatingID id, RatingText text)
+	{
+		Id = id;
+		Text = text;
+	}
 }
 
