@@ -10,17 +10,21 @@ namespace BlasII.StylePoints.Combo;
 /// </summary>
 public class ComboTimer
 {
+	/* Constants */
+
     /// <summary>
     /// The maximum amount of time left to the combo before being reset when
     /// the player doesn't attack an enemy (in seconds).
     /// </summary>
-    public static float MAXIMUM_TIME_REMAINING = 15f;
+    public static readonly float MAXIMUM_TIME_REMAINING = 15f;
 
     /// <summary>
     /// The amount of time left to the combo that is added to the current time
 	/// left for every attack hit (in seconds).
     /// </summary>
-    public static float TIME_ADDED_PER_HIT = 3f;
+    public static readonly float TIME_ADDED_PER_HIT = 3f;
+
+	/* Properties */
 
     /// <summary>
 	/// Whether the timer is running or not.
@@ -44,12 +48,15 @@ public class ComboTimer
     /// </summary>
     public bool Paused { get; private set; } = false;
 
-	private Bar _bar = new ()
-	{
-		Name = "ComboTimerBar",
-		Position = new Vector2(782, -448),
-		Size = new Vector2(150, 10),
-	};
+	/* Members */
+
+	private Bar _bar = new (
+		"ComboTimerBar",
+		position: new Vector2(782, -448),
+		size: new Vector2(150, 10)
+	);
+
+	/* Methods */
 
 	/// <summary>
 	/// Shows the time bar if it wasn't already visible, starts the timer if it

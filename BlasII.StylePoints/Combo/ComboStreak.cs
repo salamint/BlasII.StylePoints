@@ -1,5 +1,4 @@
 using BlasII.StylePoints.UI;
-using Il2CppTMPro;
 using UnityEngine;
 
 namespace BlasII.StylePoints.Combo;
@@ -10,23 +9,26 @@ namespace BlasII.StylePoints.Combo;
 /// </summary>
 public class ComboStreak
 {
+	/* Properties */
+
 	/// <summary>
 	/// The combo counter, is incremented when the player hits an enemy and is
 	/// reset when the player is hit or doesn't hit anything for too long.
 	/// </summary>
 	public int Streak { get; private set; } = 0;
 
-	private TextShadow _text = new ()
-	{
-		Name = "ComboMeterRect",
-		Position = new Vector2(768, -416),
-		Size = new Vector2(128, 128),
-		Text = "",
-		TextAlignment = TextAlignmentOptions.Left,
-		TextColor = Color.white,
-		TextSize = 48,
-		ShadowOffset = 3,
-	};
+	/* Members */
+
+	private TextShadow _text = new (
+		"ComboMeterRect",
+		position: new Vector2(768, -416),
+		size: new Vector2(128, 128),
+		text: "",
+		textSize: 48,
+		shadowOffset: 3
+	);
+
+	/* Methods */
 
 	/// <summary>
 	/// Increments the combo counter.
@@ -40,7 +42,7 @@ public class ComboStreak
 		{
 			_text.Visible = true;
 		}
-		_text.SetText($"Combo x{Streak}");
+		_text.Text = $"Combo x{Streak}";
 	}
 
 	/// <summary>
