@@ -32,10 +32,7 @@ public enum BarAlignment
 /// </summary>
 public class Bar : Component
 {
-	/// <summary>
-	/// The name of Unity component.
-	/// </summary>
-	public string Name { get; init; }
+	/* Properties */
 
 	/// <summary>
 	/// The Position on the screen in pixels (center).
@@ -50,14 +47,37 @@ public class Bar : Component
 	/// <summary>
 	/// The color of the bar (defaults to white).
 	/// </summary>
-	public Color Color { get; init; } = Color.white;
+	public Color Color { get; init; }
 
 	/// <summary>
 	/// The alignment of the bar.
 	/// </summary>
-	public BarAlignment Alignment { get; init; } = BarAlignment.Left;
+	public BarAlignment Alignment { get; init; }
 
-	private Image _image;
+	/* Members */
+
+	private Image? _image;
+
+	/* Constructors */
+
+	/// <summary>
+	/// Initializes a new bar.
+	/// </summary>
+	public Bar(
+		string name,
+		Vector2 position,
+		Vector2 size,
+		BarAlignment alignment = BarAlignment.Left,
+		Color? color = null
+	) : base(name)
+	{
+		Position = position;
+		Size = size;
+		Color = color ?? Color.white;
+		Alignment = alignment;
+	}
+
+	/* Methods */
 
 	/// <summary>
 	/// Create the bar's image.
@@ -88,7 +108,7 @@ public class Bar : Component
 	/// </summary>
 	public void Update(float ratio)
 	{
-		if (Visible)
+		if (Visible && _image != null)
 		{
 			float width = Size.x * ratio;
 			_image.rectTransform.SetSize(new Vector2(width, Size.y));
