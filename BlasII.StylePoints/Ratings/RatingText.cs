@@ -107,29 +107,27 @@ public class RatingText
 		Text = text;
 		Color = color;
 
-		LetterText = new ()
-		{
-			Name = "LetterRect",
-			Position = new Vector2(336, 416),
-			Size = RECT_SIZE,
-			Text = Text.Substring(0, 1),
-			TextAlignment = TextAlignmentOptions.Right,
-			TextColor = Color,
-			TextSize = LETTER_SIZE,
-			ShadowOffset = LETTER_SHADOW_OFFSET,
-		};
+		LetterText = new (
+			"LetterRect",
+			position: new Vector2(336, 416),
+			size: RECT_SIZE,
+			text: Text.Substring(0, 1),
+			textAlignment: TextAlignmentOptions.Right,
+			textColor: Color,
+			textSize: LETTER_SIZE,
+			shadowOffset: LETTER_SHADOW_OFFSET
+		);
 
-		WordText = new ()
-		{
-			Name = "WordRect",
-			Position = new Vector2(464, 400),
-			Size = RECT_SIZE,
-			Text = Text.Substring(1),
-			TextAlignment = TextAlignmentOptions.Left,
-			TextColor = Color,
-			TextSize = TEXT_SIZE,
-			ShadowOffset = TEXT_SHADOW_OFFSET,
-		};
+		WordText = new (
+			"WordRect",
+			position: new Vector2(464, 400),
+			size: RECT_SIZE,
+			text: Text.Substring(1),
+			textAlignment: TextAlignmentOptions.Left,
+			textColor: Color,
+			textSize: TEXT_SIZE,
+			shadowOffset: TEXT_SHADOW_OFFSET
+		);
 	}
 }
 
