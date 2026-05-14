@@ -16,11 +16,7 @@ public class RatingsManager : Manager<RatingID, Rating>
 	/// </summary>
 	public Rating Add(RatingID id, string name, Color color)
 	{
-		Rating rating = new ()
-		{
-			Id = id,
-			Text = new (name, color),
-		};
+		Rating rating = new (id, new (name, color));
 		this[id] = rating;
 		return rating;
 	}
