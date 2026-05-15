@@ -8,7 +8,7 @@ namespace BlasII.StylePoints.Patches;
 [HarmonyPatch(typeof(DamageEffect), nameof(DamageEffect.OnHitReceived))]
 class AttackReceiverComponent_ApplyInvincibilityTime_Hit_Patch
 {
-	private static AttackInfo lastAttack = null;
+	private static AttackInfo? lastAttack = null;
 
 	private static void Postfix(DamageEffect __instance, AttackInfo arg0)
 	{
