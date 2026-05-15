@@ -7,6 +7,7 @@ namespace BlasII.StylePoints.Utils;
 /// Exception thrown when trying to initialize a manager multiple times.
 /// </summary>
 public class ManagerAlreadyInitializedException<ID, Value> : Exception
+where ID : notnull
 {
 	/// <summary>
 	/// Calls the parent contructor.
@@ -22,6 +23,7 @@ public class ManagerAlreadyInitializedException<ID, Value> : Exception
 /// already exists.
 /// </summary>
 public class ManagedValueIDAlreadyExists<ID, Value> : Exception
+where ID : notnull
 {
 	/// <summary>
 	/// Calls the parent contructor.
@@ -41,7 +43,7 @@ public class ManagedValueIDAlreadyExists<ID, Value> : Exception
 /// forces the implementation of an "Init" method which should be called to fill
 /// the manager with its static data to be later retrieved.
 /// </summary>
-public abstract class Manager<ID, Value>
+public abstract class Manager<ID, Value> where ID : notnull
 {
 	/* Properties */
 
