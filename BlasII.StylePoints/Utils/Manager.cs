@@ -7,7 +7,8 @@ namespace BlasII.StylePoints.Utils;
 /// Exception thrown when trying to initialize a manager multiple times.
 /// </summary>
 public class ManagerAlreadyInitializedException<ID, Value> : Exception
-where ID : notnull
+	where ID : notnull
+	where Value : class
 {
 	/// <summary>
 	/// Calls the parent contructor.
@@ -23,7 +24,8 @@ where ID : notnull
 /// already exists.
 /// </summary>
 public class ManagedValueIDAlreadyExists<ID, Value> : Exception
-where ID : notnull
+	where ID : notnull
+	where Value : class
 {
 	/// <summary>
 	/// Calls the parent contructor.
@@ -43,7 +45,9 @@ where ID : notnull
 /// forces the implementation of an "Init" method which should be called to fill
 /// the manager with its static data to be later retrieved.
 /// </summary>
-public abstract class Manager<ID, Value> where ID : notnull
+public abstract class Manager<ID, Value>
+	where ID : notnull
+	where Value : class
 {
 	/* Properties */
 
@@ -60,6 +64,29 @@ public abstract class Manager<ID, Value> where ID : notnull
 	private Dictionary<ID, Value> ManagedValues { get; } = new ();
 
 	/* Methods */
+
+	/// <summary>
+	/// Attempts to retrieve the value for the (nullable) identifier given.
+	/// If the value has not been initialized yet or if the identifier is null,
+	/// returns the default value (by default <c>null</c>).
+	/// </summary>
+	public Value? Get(ID? id, Value? defaultValue = null)
+	{
+		if (id == null)
+			return defaultValue;
+		if (Has(id))
+			return this[id];
+		return defaultValue;
+	}
+
+	/// <summary>
+	/// Checks if there is the value for the given identifier has been
+	/// initialized.
+	/// </summary>
+	public bool Has(ID id)
+	{
+		return ManagedValues.ContainsKey(id);
+	}
 
 	/// <summary>
 	/// Initializes the manager, adding all of the "static" data in the
