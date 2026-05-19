@@ -22,6 +22,7 @@ public class ComboHandler : WeaponHandler
     public override void OnRestAtPrieDieu()
     {
 		Main.StylePoints.ComboMeter.Reset();
+		Main.StylePoints.RatingScore.Reset();
     }
 }
 
