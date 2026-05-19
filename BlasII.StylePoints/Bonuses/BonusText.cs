@@ -18,7 +18,7 @@ public class BonusText
 	/// <summary>
 	/// The offset between each bonus text in pixels.
 	/// </summary>
-	public static readonly int OFFSET = 48;
+	public static readonly int OFFSET = 40;
 
 	/* Members */
 
@@ -76,7 +76,7 @@ public class BonusText
         TimeLeft = BONUS_DISPLAY_TIME;
 		Text = new (
 			name: $"BonusText{Index}",
-			position: new Vector2(-800, -468),
+			position: new Vector2(-872, -504),
 			size: new Vector2(128, 128),
 			text: $"+ {Bonus.Name}",
 			textColor: Bonus.Color,
