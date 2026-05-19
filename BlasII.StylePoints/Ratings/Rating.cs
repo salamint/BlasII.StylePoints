@@ -22,15 +22,57 @@ public class Rating
 	/// </summary>
 	public RatingText Text { get; init; }
 
-	/* Constructors */
+	/// <summary>
+	/// The minimum amount of style points required for this rating.
+	/// </summary>
+	public int MinimumStyle { get; init; }
 
 	/// <summary>
-	/// Initializes a new rating from a unique identifier and a text.
+	/// The ID of the previous rating of this rating (nullable).
 	/// </summary>
-	public Rating(RatingID id, RatingText text)
+	public RatingID? PreviousRatingID { get; init; }
+
+	/// <summary>
+	/// The previous rating of this rating (nullable).
+	/// </summary>
+	public Rating? PreviousRating
+    {
+        get => PreviousRatingID == null ? null :
+			Main.StylePoints.RatingsManager.Get((RatingID) PreviousRatingID);
+    }
+
+	/// <summary>
+	/// The ID of the next rating of this rating (nullable).
+	/// </summary>
+	public RatingID? NextRatingID { get; init; }
+
+	/// <summary>
+	/// The next rating of this rating (nullable).
+	/// </summary>
+	public Rating? NextRating
+    {
+        get => NextRatingID == null ? null :
+			Main.StylePoints.RatingsManager.Get((RatingID) NextRatingID);
+    }
+
+    /* Constructors */
+
+    /// <summary>
+    /// Initializes a new rating from a unique identifier and a text.
+    /// </summary>
+    public Rating(
+		RatingID id,
+		RatingText text,
+		int minimumStyle,
+		RatingID? previousRatingID,
+		RatingID? nextRatingID
+	)
 	{
 		Id = id;
 		Text = text;
+		MinimumStyle = minimumStyle;
+		PreviousRatingID = previousRatingID;
+		NextRatingID = nextRatingID;
 	}
 }
 
