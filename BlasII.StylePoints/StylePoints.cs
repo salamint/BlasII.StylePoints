@@ -46,9 +46,15 @@ public class StylePoints : BlasIIMod
 	/// </summary>
 	public RatingScore RatingScore { get; } = new ();
 
+	public DebugInfo DebugInfo { get; init; }
+
 	/* Constructors */
 
-    internal StylePoints() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
+    internal StylePoints()
+		: base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION)
+	{
+		DebugInfo = new (this);
+	}
 
 	/* Methods */
 
@@ -69,8 +75,9 @@ public class StylePoints : BlasIIMod
 	/// </summary>
     protected override void OnInitialize()
     {
-		RatingsManager.Init();
+		DebugInfo.Init();
 		BonusesManager.Init();
+		RatingsManager.Init();
     }
 
 	/// <summary>
@@ -97,7 +104,9 @@ public class StylePoints : BlasIIMod
 	/// </summary>
     protected override void OnUpdate()
     {
-		BonusQueue.Update(); ComboMeter.Update();
+		DebugInfo.Update();
+		BonusQueue.Update();
+		ComboMeter.Update();
 		RatingScore.Update();
     }
 }
