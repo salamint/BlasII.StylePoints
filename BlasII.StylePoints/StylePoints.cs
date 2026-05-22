@@ -46,6 +46,10 @@ public class StylePoints : BlasIIMod
 	/// </summary>
 	public RatingScore RatingScore { get; } = new ();
 
+	/// <summary>
+	/// Displays debug information on a key press to help troubleshoot problems
+	/// or testing.
+	/// </summary>
 	public DebugInfo DebugInfo { get; init; }
 
 	/* Constructors */
