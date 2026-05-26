@@ -6,3 +6,8 @@ A mod adding style points and a style meter to Blasphemous II, giving you a bett
 | Key  | Action                                     |
 | ---- | ------------------------------------------ |
 | `F8` | Toggle on/off the mod's debug information. |
+
+## Dependencies
+
+- [Modding API](https://github.come/BrandenEK/BlasII.ModdingAPI)
+- [Weapons Events Framework](https://github.come/salamint/BlasII.Framework.WeaponEvents)
